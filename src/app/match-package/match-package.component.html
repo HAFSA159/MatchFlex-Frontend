@@ -1,0 +1,28 @@
+<div class="match-package-container">
+  <div class="match-package-list">
+    <div class="package-item" *ngFor="let package of matchPackages">
+      <div class="package-header">
+        <h3>{{package.packageType}}</h3>
+        <span class="price">{{package.price}}</span>
+      </div>
+      <div class="package-details">
+        <p>Package ID: {{package.packageId}}</p>
+        <p>Purchase Date: {{package.purchaseDate}}</p>
+        <div class="matches-list">
+          <h4>Matches</h4>
+          <ul>
+            <li *ngFor="let match of package.matches">
+              <div class="match-info">
+                <span class="teams">{{match.homeTeam}} vs {{match.awayTeam}}</span>
+                <span class="venue">{{match.venue}}</span>
+                <span class="date">{{match.matchDate}}</span>
+                <span class="status" [class]="match.status">{{match.status}}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
