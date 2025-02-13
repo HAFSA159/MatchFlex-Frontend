@@ -8,14 +8,11 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [RouterModule, HeaderComponent],
   template: `
     <app-header></app-header>
-    <main class="container">
+    <main>
       <router-outlet></router-outlet>
     </main>
   `,
   styles: [`
-    main {
-      padding: 2rem 0;
-    }
   `]
 })
 export class AppComponent {}
