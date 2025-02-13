@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { routes } from './app.routes';
-import { SmartBandListComponent } from './components/smart-band-list/smart-band-list.component';
+import { SmartBandListComponent } from './components/features/smart-band-list/smart-band-list.component';
 import { AppComponent } from './app.component'; // Composant autonome
 
 @NgModule({

@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   navItems = [
     { label: 'Home', link: '/', active: true },
-    { label: 'Services', link: '/services' },
+    { label: 'Login', link: '/login' },
     { label: 'About', link: '/about' },
     { label: 'Projects', link: '/projects' },
     { label: 'Skills', link: '/skills' },
