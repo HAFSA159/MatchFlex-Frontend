@@ -14,16 +14,7 @@ export class HeaderComponent {
     { label: 'Home', link: '/', active: true },
     { label: 'Login', link: '/login' },
     { label: 'About', link: '/about' },
-    { label: 'Projects', link: '/projects' },
-    { label: 'Skills', link: '/skills' },
     { label: 'Contacts', link: '/contacts' },
-    { label: 'Pages', link: '/pages', hasDropdown: true }
-  ];
-
-  socialLinks = [
-    { icon: 'twitter', link: '#' },
-    { icon: 'facebook-f', link: '#' },
-    { icon: 'linkedin-in', link: '#' },
-    { icon: 'instagram', link: '#' }
+    { label: 'Dashboard', link: '/dashboard' },
   ];
 }
