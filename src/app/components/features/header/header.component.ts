@@ -14,7 +14,7 @@ export class HeaderComponent {
     { label: 'Home', link: '/', active: true },
     { label: 'Login', link: '/login' },
     { label: 'About', link: '/about' },
-    { label: 'Contacts', link: '/contacts' },
+    { label: 'Contacts', link: '/contact' },
     { label: 'Dashboard', link: '/dashboard' },
   ];
 }

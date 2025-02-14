@@ -5,6 +5,7 @@ import {LoginComponent} from './components/features/Auth/login/login.component';
 import {RegisterComponent} from './components/features/Auth/register/register.component';
 import {AboutPageComponent} from './components/features/about-page/about-page.component';
 import {DashboardAdminComponent} from './components/features/dashboard-admin/dashboard-admin.component';
+import {ContactComponent} from './components/features/contact/contact.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'dashboard', component: DashboardAdminComponent },
+  { path: 'contact', component: ContactComponent },
 
 ];
