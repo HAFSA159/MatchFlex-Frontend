@@ -7,7 +7,6 @@ import {AboutPageComponent} from './components/features/about-page/about-page.co
 import {DashboardAdminComponent} from './components/features/dashboard-admin/dashboard-admin.component';
 import {ContactComponent} from './components/features/contact/contact.component';
 import {ProfilComponent} from './components/features/profil/profil.component';
-import {MatchPackageComponent} from './components/features/match-package/match-package.component';
 import {DetailsGroupsComponent} from './components/features/details-groups/details-groups.component';
 
 export const routes: Routes = [
@@ -20,7 +19,6 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardAdminComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'profil', component: ProfilComponent },
-  { path: 'matchpackage', component: MatchPackageComponent },
   { path: 'detailgroups', component: DetailsGroupsComponent },
 
 ];
