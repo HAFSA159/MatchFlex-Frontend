@@ -6,6 +6,9 @@ import {RegisterComponent} from './components/features/Auth/register/register.co
 import {AboutPageComponent} from './components/features/about-page/about-page.component';
 import {DashboardAdminComponent} from './components/features/dashboard-admin/dashboard-admin.component';
 import {ContactComponent} from './components/features/contact/contact.component';
+import {ProfilComponent} from './components/features/profil/profil.component';
+import {MatchPackageComponent} from './components/features/match-package/match-package.component';
+import {DetailsGroupsComponent} from './components/features/details-groups/details-groups.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,5 +19,8 @@ export const routes: Routes = [
   { path: 'about', component: AboutPageComponent },
   { path: 'dashboard', component: DashboardAdminComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'profil', component: ProfilComponent },
+  { path: 'matchpackage', component: MatchPackageComponent },
+  { path: 'detailgroups', component: DetailsGroupsComponent },
 
 ];

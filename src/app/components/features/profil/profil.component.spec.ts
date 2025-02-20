@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatchPackageComponent } from './match-package.component';
+import { ProfilComponent } from './profil.component';
 
-describe('MatchPackageComponent', () => {
-  let component: MatchPackageComponent;
-  let fixture: ComponentFixture<MatchPackageComponent>;
+describe('ProfilComponent', () => {
+  let component: ProfilComponent;
+  let fixture: ComponentFixture<ProfilComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatchPackageComponent]
+      imports: [ProfilComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(MatchPackageComponent);
+    
+    fixture = TestBed.createComponent(ProfilComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
