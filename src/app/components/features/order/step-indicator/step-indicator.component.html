@@ -1,0 +1,25 @@
+<div class="py-6">
+  <nav aria-label="Progress">
+    <ol role="list" class="flex items-center justify-center gap-8">
+      <li *ngFor="let step of steps" class="relative flex-1 max-w-[160px]">
+        <div class="flex items-center justify-center">
+          <div [class]="'flex h-10 w-10 items-center justify-center rounded-full ' +
+            (isCurrentStep(step.number) ? 'bg-blue-500 text-white' :
+             isCompleted(step.number) ? 'bg-green-500 text-white' :
+             'bg-gray-200 text-gray-500')">
+            <span *ngIf="!isCompleted(step.number)">{{step.number}}</span>
+            <svg *ngIf="isCompleted(step.number)" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        </div>
+        <div class="mt-2 text-center">
+          <span class="text-sm font-medium" [class.text-blue-500]="isCurrentStep(step.number)">
+            {{step.title}}
+          </span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+</div>
+

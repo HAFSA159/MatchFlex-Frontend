@@ -1,0 +1,11 @@
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold mb-4">Order Process</h1>
+    <p>Current Step: {{ currentStep }}</p>
+
+    <app-step1 *ngIf="currentStep === 1" (nextStep)="updateStep(2)"></app-step1>
+    <app-step2 *ngIf="currentStep === 2" (nextStep)="updateStep(3)" (prevStep)="updateStep(1)"></app-step2>
+    <app-step3 *ngIf="currentStep === 3" (prevStep)="updateStep(2)"></app-step3>
+  </div>
+</div>
+

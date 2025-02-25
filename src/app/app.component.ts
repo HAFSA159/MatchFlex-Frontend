@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router, NavigationEnd, Event } from '@angular/router';
-import { HeaderComponent } from './components/features/header/header.component';
-import { FooterComponent } from './components/features/footer/footer.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 
