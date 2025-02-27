@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderComponent } from './order.component';
+import { ColorBandChoiceComponent } from './color-band-choice.component';
 
-describe('OrderComponent', () => {
-  let component: OrderComponent;
-  let fixture: ComponentFixture<OrderComponent>;
+describe('ColorBandChoiceComponent', () => {
+  let component: ColorBandChoiceComponent;
+  let fixture: ComponentFixture<ColorBandChoiceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrderComponent]
+      imports: [ColorBandChoiceComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(OrderComponent);
+    fixture = TestBed.createComponent(ColorBandChoiceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

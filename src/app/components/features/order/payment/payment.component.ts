@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import  { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-step2',
-  templateUrl: './step2.component.html',
+  selector: 'app-payment',
+  templateUrl: './payment.component.html',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule]
 })
-export class Step2Component implements OnInit {
+export class PaymentComponent implements OnInit {
   paymentForm!: FormGroup;
-  currentStep = 3; // Payment is step 3
+  currentStep = 3;
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +35,7 @@ export class Step2Component implements OnInit {
       ]],
       cvv: ['', [
         Validators.required,
-        Validators.pattern('^[0-9]{3,4}$')
+        Validators.pattern('^[0-9]{3}$')
       ]]
     });
   }
@@ -67,13 +67,13 @@ export class Step2Component implements OnInit {
   }
 
   goToPreviousStep(): void {
-    this.router.navigate(['/step1']);
+    this.router.navigate(['/user-info']);
   }
 
   onSubmit($event: any): void {
     if (this.paymentForm.valid) {
       this.saveFormData();
-      this.router.navigate(['/step3']); // Assuming there's a confirmation step
+      this.router.navigate(['/confirmation']);
     } else {
       this.markFormGroupTouched(this.paymentForm);
     }

@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  templateUrl: './step1.component.html',
+  templateUrl: './user-info.component.html',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule]
 })
-export class Step1Component implements OnInit {
+export class UserInfoComponent implements OnInit {
   userForm!: FormGroup;
   currentStep = 2;
 
@@ -49,13 +49,13 @@ export class Step1Component implements OnInit {
   }
 
   goToPreviousStep(): void {
-    this.router.navigate(['/order']);
+    this.router.navigate(['/color-band-choice']);
   }
 
   goToNextStep(): void {
     if (this.userForm.valid) {
       this.saveFormData();
-      this.router.navigate(['/step2']);
+      this.router.navigate(['/payment']);
     } else {
       this.markFormGroupTouched(this.userForm);
     }

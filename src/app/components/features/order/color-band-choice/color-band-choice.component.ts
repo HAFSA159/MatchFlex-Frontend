@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import {CommonModule, NgForOf} from '@angular/common';
 
 interface ColorOption {
   name: string;
@@ -9,12 +9,17 @@ interface ColorOption {
 }
 
 @Component({
-  templateUrl: './order.component.html',
+  selector: 'app-color-band-choice',
   standalone: true,
-  imports: [CommonModule]
+  imports: [
+    NgForOf
+  ],
+  templateUrl: './color-band-choice.component.html',
+  styleUrl: './color-band-choice.component.scss'
 })
-export class OrderComponent {
+export class ColorBandChoiceComponent implements OnInit{
   selectedColor: string | null = null;
+  groupName: string = '';
 
   colorOptions: ColorOption[] = [
     { name: 'Red', class: 'bg-red-500', ringClass: 'ring-red-300' },
@@ -24,7 +29,13 @@ export class OrderComponent {
     { name: 'Purple', class: 'bg-purple-500', ringClass: 'ring-purple-300' },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.groupName = params.get('groupName') || '';
+    });
+  }
 
   selectColor(color: string): void {
     this.selectedColor = color;
@@ -33,7 +44,7 @@ export class OrderComponent {
   goToNextStep(): void {
     if (this.selectedColor) {
       localStorage.setItem('selectedColor', this.selectedColor);
-      this.router.navigate(['/step1']);
+      this.router.navigate(['/user-info']);
     } else {
       alert('Please select a color before proceeding.');
     }

@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
+import {AllGroupsComponent} from './components/features/all-groups/all-groups.component';
+import {DetailsGroupsComponent} from './components/features/details-groups/details-groups.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +15,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     CommonModule,
+    AllGroupsComponent,
+    DetailsGroupsComponent,
     RouterModule.forRoot(routes)
   ],
   providers: [],
