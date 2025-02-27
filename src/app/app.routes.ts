@@ -9,9 +9,10 @@ import {ContactComponent} from './components/features/contact/contact.component'
 import {ProfilComponent} from './components/features/profil/profil.component';
 import {DetailsGroupsComponent} from './components/features/details-groups/details-groups.component';
 import {OrderComponent} from './components/features/order/order.component';
-import {Step1Component} from './components/features/order/step1/step1.component';
-import {Step2Component} from './components/features/order/step2/step2.component';
-import {Step3Component} from './components/features/order/step3/step3.component';
+import {Step1Component} from './components/features/order/UserInfo/step1.component';
+import {Step2Component} from './components/features/order/PaymentInfo/step2.component';
+import {Step3Component} from './components/features/order/Confirmation/step3.component';
+import {AllGroupsComponent} from './components/features/all-groups/all-groups.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,12 +25,16 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'profil', component: ProfilComponent },
   { path: 'detailgroups', component: DetailsGroupsComponent },
-  { path: "order", component: OrderComponent,
+  { path: 'all-groups', component: AllGroupsComponent },
+  { path: "order", component: OrderComponent},
+  { path: "step1", component: Step1Component},
+
+/*  { path: "order", component: OrderComponent,
     children: [
       { path: "", redirectTo: "step1", pathMatch: "full" },
       { path: "step1", component: Step1Component },
       { path: "step2", component: Step2Component },
       { path: "step3", component: Step3Component },
     ],
-  },
+  },*/
 ];

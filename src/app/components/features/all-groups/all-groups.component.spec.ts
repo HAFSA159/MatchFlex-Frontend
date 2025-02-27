@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StepIndicatorComponent } from './step-indicator.component';
+import { AllGroupsComponent } from './all-groups.component';
 
-describe('StepIndicatorComponent', () => {
-  let component: StepIndicatorComponent;
-  let fixture: ComponentFixture<StepIndicatorComponent>;
+describe('AllGroupsComponent', () => {
+  let component: AllGroupsComponent;
+  let fixture: ComponentFixture<AllGroupsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StepIndicatorComponent]
+      imports: [AllGroupsComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(StepIndicatorComponent);
+    fixture = TestBed.createComponent(AllGroupsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

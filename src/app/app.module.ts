@@ -5,18 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { routes } from './app.routes';
-import { SmartBandListComponent } from './components/features/smart-band-list/smart-band-list.component';
-import { AppComponent } from './app.component'; // Composant autonome
+import { AppComponent } from './app.component';
 
 @NgModule({
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
     CommonModule,
-    RouterModule.forRoot(routes),
-    AppComponent // Importez le composant autonome ici
+    RouterModule.forRoot(routes)
   ],
   providers: [],
-  bootstrap: [AppComponent] // Bootstrapping du composant autonome
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
+

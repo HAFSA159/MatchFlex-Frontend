@@ -1,10 +1,14 @@
 import { Component, type OnInit } from "@angular/core"
+import {AllGroupsComponent} from '../all-groups/all-groups.component';
 
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
+  imports: [
+    AllGroupsComponent
+  ],
   standalone: true
 })
 export class HomeComponent implements OnInit {
