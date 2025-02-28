@@ -27,7 +27,7 @@ export class PaymentComponent implements OnInit {
       cardHolder: ['', [Validators.required]],
       cardNumber: ['', [
         Validators.required,
-        Validators.pattern('^[0-9]{16}$')
+        Validators.pattern('^[0-9 ]{19}$')
       ]],
       expiryDate: ['', [
         Validators.required,
@@ -72,15 +72,17 @@ export class PaymentComponent implements OnInit {
 
   onSubmit($event: any): void {
     if (this.paymentForm.valid) {
-      this.saveFormData();
+      let formData = this.paymentForm.value;
+      formData.cardNumber = formData.cardNumber.replace(/\s+/g, '');
+      this.saveFormData(formData);
       this.router.navigate(['/confirmation']);
     } else {
       this.markFormGroupTouched(this.paymentForm);
     }
   }
 
-  saveFormData(): void {
-    const formData = this.paymentForm.value;
+
+  saveFormData(formData: any): void {
     localStorage.setItem('paymentFormData', JSON.stringify(formData));
   }
 
@@ -108,10 +110,15 @@ export class PaymentComponent implements OnInit {
       return 'This field is required';
     }
 
+    if (fieldName === 'cardNumber') {
+      let rawValue = field.value.replace(/\s+/g, '');
+      if (rawValue.length !== 16) {
+        return 'Please enter a valid 16-digit card number';
+      }
+    }
+
     if (field.hasError('pattern')) {
       switch(fieldName) {
-        case 'cardNumber':
-          return 'Please enter a valid 16-digit card number';
         case 'expiryDate':
           return 'Please enter a valid expiry date (MM/YY)';
         case 'cvv':
@@ -122,5 +129,16 @@ export class PaymentComponent implements OnInit {
     }
 
     return '';
+  }
+
+  goToNextStep(): void {
+    if (this.paymentForm.valid) {
+      let formData = this.paymentForm.value;
+      formData.cardNumber = formData.cardNumber.replace(/\s+/g, '');
+      this.saveFormData(formData);
+      this.router.navigate(['/confirmation']);
+    } else {
+      this.markFormGroupTouched(this.paymentForm);
+    }
   }
 }

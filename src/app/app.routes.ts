@@ -13,6 +13,7 @@ import {ColorBandChoiceComponent} from './components/features/order/color-band-c
 import {UserInfoComponent} from './components/features/order/user-info/user-info.component';
 import {PaymentComponent} from './components/features/order/payment/payment.component';
 import {ConfirmationComponent} from './components/features/order/confirmation/confirmation.component';
+import {TrackOrderComponent} from './components/features/track-order/track-order.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -30,4 +31,5 @@ export const routes: Routes = [
   { path: "user-info", component: UserInfoComponent },
   { path: "payment", component: PaymentComponent},
   { path: "confirmation", component: ConfirmationComponent},
+  { path: "track-order/:id", component: TrackOrderComponent},
 ];
