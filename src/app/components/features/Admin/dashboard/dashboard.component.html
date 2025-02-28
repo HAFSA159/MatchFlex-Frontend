@@ -1,0 +1,44 @@
+<div class="flex min-h-screen">
+  <app-sidebar></app-sidebar>
+  <!-- Main Content -->
+  <div class="flex-1 p-6 bg-gray-50 overflow-y-auto">
+    <!-- Header -->
+    <header class="flex flex-wrap justify-between items-center mb-8">
+      <div class="w-full">
+        <div class="text-sm text-gray-600 mb-2">
+          Pages / Dashboard
+        </div>
+        <h1 class="text-2xl font-bold text-slate-800 mr-auto">Dashboard</h1>
+      </div>
+
+      <div class="flex items-center gap-4 mt-4">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Type here..."
+            class="py-2 px-4 rounded-full border border-gray-300 outline-none focus:border-[#BA5751] min-w-[200px]"
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Metric Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div *ngFor="let metric of metrics" class="bg-white rounded-xl shadow-lg p-4 flex justify-between items-center">
+        <div>
+          <div class="text-sm text-gray-600 mb-2">{{metric.label}}</div>
+          <div class="text-2xl font-bold text-slate-800 mb-1">{{metric.value}}</div>
+          <div [ngClass]="{'text-green-600': metric.changePercentage > 0, 'text-red-600': metric.changePercentage < 0}"
+               class="text-sm font-semibold">
+            {{metric.changePercentage > 0 ? '+' : ''}}{{metric.changePercentage}}%
+          </div>
+        </div>
+        <div [ngClass]="metric.iconBgColor" class="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-r from-[#ff2a56] to-[#ff7842] text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="getIconPath(metric.icon)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,6 @@ import {HomeComponent} from './components/features/home/home.component';
 import {LoginComponent} from './components/features/Auth/login/login.component';
 import {RegisterComponent} from './components/features/Auth/register/register.component';
 import {AboutPageComponent} from './components/features/about-page/about-page.component';
-import {DashboardAdminComponent} from './components/features/dashboard-admin/dashboard-admin.component';
 import {ContactComponent} from './components/features/contact/contact.component';
 import {ProfilComponent} from './components/features/profil/profil.component';
 import {DetailsGroupsComponent} from './components/features/details-groups/details-groups.component';
@@ -14,6 +13,9 @@ import {UserInfoComponent} from './components/features/order/user-info/user-info
 import {PaymentComponent} from './components/features/order/payment/payment.component';
 import {ConfirmationComponent} from './components/features/order/confirmation/confirmation.component';
 import {TrackOrderComponent} from './components/features/track-order/track-order.component';
+import {DashboardComponent} from './components/features/Admin/dashboard/dashboard.component';
+import {BillingComponent} from './components/features/Admin/billing/billing.component';
+import {TablesComponent} from './components/features/Admin/tables/tables.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,7 +24,9 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutPageComponent },
-  { path: 'dashboard', component: DashboardAdminComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard-billing', component: BillingComponent },
+  { path: 'dashboard-tables', component: TablesComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'profil', component: ProfilComponent },
   { path: 'details-groups/:groupName', component: DetailsGroupsComponent },

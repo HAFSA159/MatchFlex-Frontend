@@ -1,0 +1,177 @@
+<div class="flex min-h-screen">
+  <app-sidebar></app-sidebar>
+  <div class="container">
+    <h2 class="table-title">Authors table</h2>
+
+    <div class="table-container">
+      <div class="table-header">
+        <div class="header-cell author-cell">AUTHOR</div>
+        <div class="header-cell function-cell">FUNCTION</div>
+        <div class="header-cell status-cell">STATUS</div>
+        <div class="header-cell employed-cell">EMPLOYED</div>
+        <div class="header-cell action-cell"></div>
+      </div>
+
+      <div class="table-row" *ngFor="let author of authors">
+        <div class="cell author-cell">
+          <div class="author-info">
+            <div class="avatar" [ngStyle]="{'background-image': 'url(' + author.avatar + ')'}"></div>
+            <div class="author-details">
+              <div class="author-name">{{ author.name }}</div>
+              <div class="author-email">{{ author.email }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="cell function-cell">
+          <div class="function-title">{{ author.function }}</div>
+          <div class="function-subtitle">{{ author.subFunction }}</div>
+        </div>
+        <div class="cell status-cell">
+        <span class="status-badge" [ngClass]="{'online': author.status === 'ONLINE', 'offline': author.status === 'OFFLINE'}">
+          {{ author.status }}
+        </span>
+        </div>
+        <div class="cell employed-cell">{{ author.employedDate }}</div>
+        <div class="cell action-cell">
+          <a href="#" class="edit-link" (click)="editAuthor(author); $event.preventDefault()">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .container {
+      font-family: Arial, sans-serif;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .table-title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .table-container {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .table-header {
+      display: flex;
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      background-color: #fff;
+    }
+
+    .header-cell {
+      font-size: 12px;
+      font-weight: 500;
+      color: #8a94a6;
+      letter-spacing: 0.5px;
+    }
+
+    .table-row {
+      display: flex;
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      align-items: center;
+    }
+
+    .table-row:last-child {
+      border-bottom: none;
+    }
+
+    .author-cell {
+      flex: 3;
+    }
+
+    .function-cell {
+      flex: 2;
+    }
+
+    .status-cell {
+      flex: 1;
+      text-align: center;
+    }
+
+    .employed-cell {
+      flex: 1;
+      text-align: center;
+    }
+
+    .action-cell {
+      flex: 0.5;
+      text-align: right;
+    }
+
+    .author-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin-right: 15px;
+      background-color: #e0e0e0;
+    }
+
+    .author-name {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .author-email {
+      font-size: 13px;
+      color: #8a94a6;
+    }
+
+    .function-title {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .function-subtitle {
+      font-size: 13px;
+      color: #8a94a6;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .online {
+      background-color: #5cb85c;
+      color: white;
+    }
+
+    .offline {
+      background-color: #8a94a6;
+      color: white;
+    }
+
+    .edit-link {
+      color: #6c7ae0;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .edit-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</div>
