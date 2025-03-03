@@ -1,60 +1,54 @@
 <div class="flex min-h-screen">
   <app-sidebar></app-sidebar>
-  <div class="container">
-    <h2 class="table-title">Authors table</h2>
-
-    <div class="table-container">
-      <div class="table-header">
-        <div class="header-cell author-cell">AUTHOR</div>
-        <div class="header-cell function-cell">FUNCTION</div>
-        <div class="header-cell status-cell">STATUS</div>
-        <div class="header-cell employed-cell">EMPLOYED</div>
-        <div class="header-cell action-cell"></div>
+  <div class="flex-1 p-8">
+    <!-- Header -->
+    <header class="flex flex-wrap justify-between items-center mb-8">
+      <div class="w-full">
+        <div class="text-sm text-gray-600 mb-2">
+          Pages / Bracelet Tables
+        </div>
+        <h1 class="text-2xl font-bold text-slate-800 mr-auto">Bracelet Table</h1>
       </div>
+    </header>
+    <div class="mb-8">
+      <div class="table-container">
+        <div class="table-header">
+          <div class="header-cell author-cell">USER</div>
+          <div class="header-cell function-cell">BRACELET SERIE & PACK TYPE </div>
+          <div class="header-cell status-cell">STATUS</div>
+          <div class="header-cell employed-cell">SET DATE</div>
+          <div class="header-cell action-cell"></div>
+        </div>
 
-      <div class="table-row" *ngFor="let author of authors">
-        <div class="cell author-cell">
-          <div class="author-info">
-            <div class="avatar" [ngStyle]="{'background-image': 'url(' + author.avatar + ')'}"></div>
-            <div class="author-details">
-              <div class="author-name">{{ author.name }}</div>
-              <div class="author-email">{{ author.email }}</div>
+        <div class="table-row" *ngFor="let author of authors">
+          <div class="cell author-cell">
+            <div class="author-info">
+              <div class="avatar" [ngStyle]="{'background-image': 'url(' + author.avatar + ')'}"></div>
+              <div class="author-details">
+                <div class="author-name">{{ author.name }}</div>
+                <div class="author-email">{{ author.email }}</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="cell function-cell">
-          <div class="function-title">{{ author.function }}</div>
-          <div class="function-subtitle">{{ author.subFunction }}</div>
-        </div>
-        <div class="cell status-cell">
-        <span class="status-badge" [ngClass]="{'online': author.status === 'ONLINE', 'offline': author.status === 'OFFLINE'}">
-          {{ author.status }}
-        </span>
-        </div>
-        <div class="cell employed-cell">{{ author.employedDate }}</div>
-        <div class="cell action-cell">
-          <a href="#" class="edit-link" (click)="editAuthor(author); $event.preventDefault()">Edit</a>
+          <div class="cell function-cell">
+            <div class="function-title">{{ author.function }}</div>
+            <div class="function-subtitle">{{ author.subFunction }}</div>
+          </div>
+          <div class="cell status-cell">
+            <span class="status-badge" [ngClass]="{'online': author.status === 'ACTIVE', 'offline': author.status === 'INACTIVE'}">
+              {{ author.status }}
+            </span>
+          </div>
+          <div class="cell employed-cell">{{ author.employedDate }}</div>
+          <div class="cell action-cell">
+            <a href="#" class="edit-link" (click)="editAuthor(author); $event.preventDefault()">Edit</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <style>
-    .container {
-      font-family: Arial, sans-serif;
-      color: #333;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .table-title {
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
     .table-container {
       background-color: white;
       border-radius: 8px;
@@ -173,5 +167,17 @@
     .edit-link:hover {
       text-decoration: underline;
     }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .reaction-count svg {
+      margin-left: 5px;
+    }
+
   </style>
 </div>
