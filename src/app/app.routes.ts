@@ -18,6 +18,7 @@ import {TablesComponent} from './components/features/Admin/braceltTables/tables.
 import {UserComponent} from './components/features/Admin/user/user.component';
 import {ProfileComponent} from './components/features/Admin/profile/profile.component';
 import {MatchComponent} from './components/features/Admin/match/match.component';
+import {PackagesComponent} from './components/features/Admin/packages/packages.component';
 
 export const routes: Routes = [
   /* Page*/
@@ -43,6 +44,7 @@ export const routes: Routes = [
   { path: 'dashboard-user', component: UserComponent },
   { path: 'dashboard-profil', component: ProfileComponent },
   { path: 'dashboard-matchs', component: MatchComponent },
+  { path: 'dashboard-package', component: PackagesComponent },
 
   /* Auth */
   { path: 'login', component: LoginComponent },

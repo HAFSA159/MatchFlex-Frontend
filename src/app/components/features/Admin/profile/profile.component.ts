@@ -35,17 +35,14 @@ export class ProfileComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // You can fetch user data here if needed
   }
 
   editProfile(): void {
     console.log("Edit profile clicked")
-    // Implement edit profile functionality
   }
 
   changePassword(): void {
     console.log("Change password clicked")
-    // Implement change password functionality
   }
 }
 

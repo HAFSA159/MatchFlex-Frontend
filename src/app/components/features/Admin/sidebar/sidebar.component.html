@@ -2,7 +2,7 @@
   <!-- Sidebar -->
   <div class="w-64 bg-white shadow-lg p-6 flex flex-col z-10">
     <div class="flex items-center mb-8 px-2">
-      <img src="assets/logo.png" alt="Logo">
+      <a href="/"><img src="assets/logo.png" alt="Logo"></a>
     </div>
 
     <nav class="flex flex-col gap-1">
@@ -43,6 +43,15 @@
           <polygon points="20,9 16,9 14,14 18,18 22,14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <span>Matchs</span>
+      </a>
+
+      <a routerLink="/dashboard-package" routerLinkActive="active"
+         class="flex items-center px-4 py-3 rounded-xl cursor-pointer transition-all text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l9-4 9 4-9 4-9-4v10a2 2 0 002 2h14a2 2 0 002-2V7" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l9 5 9-5M9 21V10M15 21V10" />
+        </svg>
+        <span>Package</span>
       </a>
 
     <div class="mt-6 mb-2">
