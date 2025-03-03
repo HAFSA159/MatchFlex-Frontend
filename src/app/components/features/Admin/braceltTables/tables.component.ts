@@ -7,8 +7,8 @@ interface Bracelet {
   name: string;
   email: string;
   avatar: string;
-  function: string;
-  subFunction: string;
+  serialNumber: string;
+  package: string;
   status: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED';
   employedDate: string;
 }
@@ -26,23 +26,23 @@ interface Bracelet {
   styleUrl: './tables.component.scss'
 })
 export class TablesComponent implements OnInit {
-  authors: Bracelet[] = [];
+  bracelets: Bracelet[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.initializeAuthors();
+    this.initializeBracelets();
   }
 
-  initializeAuthors(): void {
-    this.authors = [
+  initializeBracelets(): void {
+    this.bracelets = [
       {
         id: 1,
         name: 'John Michael',
         email: 'john@creative-tim.com',
         avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-        function: 'MSD-12345678',
-        subFunction: 'Premium',
+        serialNumber: 'MSD-12345678',
+        package: 'Premium',
         status: 'ACTIVE',
         employedDate: '23/02/25'
       },
@@ -51,15 +51,22 @@ export class TablesComponent implements OnInit {
         name: 'Alexa Liras',
         email: 'alexa@creative-tim.com',
         avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
-        function: 'SDF-3456789',
-        subFunction: 'Basic',
+        serialNumber: 'SDF-3456789',
+        package: 'Basic',
         status: 'INACTIVE',
         employedDate: '11/01/25'
       },
     ];
   }
 
-  editAuthor(author: Bracelet): void {
-    console.log('Edit author:', author);
+  editBracelet(bracelet: Bracelet): void {
+    console.log("Edit bracelet:", bracelet)
+  }
+
+  deleteBracelet(bracelet: Bracelet): void {
+    console.log("Delete bracelet:", bracelet)
+    if (confirm(`Are you sure you want to delete the bracelet for ${bracelet.name}?`)) {
+      this.bracelets = this.bracelets.filter((b) => b.id !== bracelet.id)
+    }
   }
 }

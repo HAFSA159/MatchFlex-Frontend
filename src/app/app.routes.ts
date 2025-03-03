@@ -14,7 +14,7 @@ import {PaymentComponent} from './components/features/order/payment/payment.comp
 import {ConfirmationComponent} from './components/features/order/confirmation/confirmation.component';
 import {TrackOrderComponent} from './components/features/track-order/track-order.component';
 import {DashboardComponent} from './components/features/Admin/dashboard/dashboard.component';
-import {TablesComponent} from './components/features/Admin/tables/tables.component';
+import {TablesComponent} from './components/features/Admin/braceltTables/tables.component';
 import {UserComponent} from './components/features/Admin/user/user.component';
 import {ProfileComponent} from './components/features/Admin/profile/profile.component';
 import {MatchComponent} from './components/features/Admin/match/match.component';

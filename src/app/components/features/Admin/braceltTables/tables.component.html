@@ -5,43 +5,46 @@
     <header class="flex flex-wrap justify-between items-center mb-8">
       <div class="w-full">
         <div class="text-sm text-gray-600 mb-2">
-          Pages / Matches Tables
+          Pages / Bracelet Tables
         </div>
-        <h1 class="text-2xl font-bold text-slate-800 mr-auto">Matches Table</h1>
+        <h1 class="text-2xl font-bold text-slate-800 mr-auto">Bracelet Table</h1>
       </div>
     </header>
     <div class="mb-8">
       <div class="table-container">
         <div class="table-header">
-          <div class="header-cell match-cell">USER</div>
-          <div class="header-cell function-cell">BRACELET SERIES & PACK TYPE</div>
+          <div class="header-cell author-cell">USER</div>
+          <div class="header-cell function-cell">SERIAL NUMBER</div>
+          <div class="header-cell function-cell">PACKAGE</div>
           <div class="header-cell status-cell">STATUS</div>
-          <div class="header-cell employed-cell">SET DATE</div>
-          <div class="header-cell action-cell">ACTIONS</div>
+          <div class="header-cell employed-cell">ACTIVATION DATE</div>
+          <div class="header-cell action-cell"></div>
         </div>
 
-        <div class="table-row" *ngFor="let match of matches">
-          <div class="cell match-cell">
-            <div class="match-info">
-              <div class="avatar" [ngStyle]="{'background-image': 'url(' + match.avatar + ')'}"></div>
-              <div class="match-details">
-                <div class="match-name">{{ match.name }}</div>
-                <div class="match-email">{{ match.email }}</div>
+        <div class="table-row" *ngFor="let bracelet of bracelets">
+          <div class="cell author-cell">
+            <div class="author-info">
+              <div class="avatar" [ngStyle]="{'background-image': 'url(' + bracelet.avatar + ')'}"></div>
+              <div class="author-details">
+                <div class="author-name">{{ bracelet.name }}</div>
+                <div class="author-email">{{ bracelet.email }}</div>
               </div>
             </div>
           </div>
           <div class="cell function-cell">
-            <div class="function-title">{{ match.function }}</div>
-            <div class="function-subtitle">{{ match.subFunction }}</div>
+            <div class="function-title">{{ bracelet.serialNumber }}</div>
+          </div>
+          <div class="cell function-cell">
+            <div class="function-subtitle">{{ bracelet.package }}</div>
           </div>
           <div class="cell status-cell">
-            <span class="status-badge" [ngClass]="{'online': match.status === 'SCHEDULED', 'offline': match.status === 'COMPLETED'}">
-              {{ match.status }}
+            <span class="status-badge" [ngClass]="{'online': bracelet.status === 'ACTIVE', 'offline': bracelet.status === 'INACTIVE'}">
+              {{ bracelet.status }}
             </span>
           </div>
-          <div class="cell employed-cell">{{ match.employedDate }}</div>
+          <div class="cell employed-cell">{{ bracelet.employedDate }}</div>
           <div class="cell action-cell">
-            <a href="#" class="action-icon" (click)="editMatch(match); $event.preventDefault()" title="Edit">
+            <a href="#" class="action-icon" (click)="editBracelet(bracelet)" title="Edit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -57,7 +60,7 @@
                 />
               </svg>
             </a>
-            <a href="#" class="action-icon" (click)="deleteMatch(match); $event.preventDefault()" title="Delete">
+            <a href="#" class="action-icon" (click)="deleteBracelet(bracelet)" title="Delete">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -74,6 +77,7 @@
               </svg>
             </a>
           </div>
+
         </div>
       </div>
     </div>
