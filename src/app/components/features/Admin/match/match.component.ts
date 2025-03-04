@@ -1,68 +1,105 @@
-import { Component, type OnInit } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms"
 import { SidebarComponent } from "../sidebar/sidebar.component"
-import { NgClass, NgForOf, NgStyle } from "@angular/common"
+import { NgClass, NgForOf, NgIf, NgStyle } from "@angular/common"
 
 interface Match {
   id: number
-  name: string
-  email: string
-  avatar: string
-  function: string
-  subFunction: string
-  status: "SCHEDULED" | "ONGOING" | "COMPLETED"
-  employedDate: string
+  homeTeam: string
+  awayTeam: string
+  matchDate: string
+  venue: string
+  stage: string
+  status: "SCHEDULED" | "COMPLETED"
 }
 
 @Component({
   selector: "app-match",
   standalone: true,
-  imports: [SidebarComponent, NgStyle, NgForOf, NgClass],
+  imports: [SidebarComponent, NgForOf, NgClass, NgIf, ReactiveFormsModule, NgStyle],
   templateUrl: "./match.component.html",
   styleUrls: ["./match.component.scss"],
 })
 export class MatchComponent implements OnInit {
-  matches: Match[] = []
+  matches: Match[] = [
+    {
+      id: 1,
+      homeTeam: "Tunisie",
+      awayTeam: "Zambia",
+      matchDate: "22/05/2025",
+      venue: "Series X123",
+      stage: "Camp noo",
+      status: "SCHEDULED",
+    },
+    {
+      id: 2,
+      homeTeam: "Maroc",
+      awayTeam: "Mali",
+      matchDate: "22/05/2025",
+      venue: "Series X123",
+      stage: "Med 6",
+      status: "COMPLETED",
+    },
+  ]
 
-  constructor() {}
+  showAddForm = false
+  matchForm: FormGroup
 
-  ngOnInit(): void {
-    this.initializeMatches()
+  constructor(private fb: FormBuilder) {
+    this.matchForm = this.fb.group({
+      homeTeam: ["", Validators.required],
+      awayTeam: ["", Validators.required],
+      matchDate: ["", Validators.required],
+      venue: ["", Validators.required],
+      stage: ["", Validators.required],
+      status: ["SCHEDULED", Validators.required],
+    })
   }
 
-  initializeMatches(): void {
-    this.matches = [
-      {
-        id: 1,
-        name: "John Michael",
-        email: "john@example.com",
-        avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-        function: "MSD-12345678",
-        subFunction: "Premium",
-        status: "SCHEDULED",
-        employedDate: "23/02/25",
-      },
-      {
-        id: 2,
-        name: "Alexa Liras",
-        email: "alexa@example.com",
-        avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-        function: "SDF-3456789",
-        subFunction: "Basic",
-        status: "COMPLETED",
-        employedDate: "11/01/25",
-      },
-    ]
+  ngOnInit(): void {}
+
+  showAddMatchForm(): void {
+    this.showAddForm = true
+    this.matchForm.reset({
+      status: "SCHEDULED",
+    })
+  }
+
+  hideAddMatchForm(): void {
+    this.showAddForm = false
+    this.matchForm.reset()
+  }
+
+  onSubmit(): void {
+    if (this.matchForm.valid) {
+      const formValue = this.matchForm.value
+      const newMatch: Match = {
+        id: Math.max(...this.matches.map((m) => m.id)) + 1,
+        homeTeam: formValue.homeTeam,
+        awayTeam: formValue.awayTeam,
+        matchDate: formValue.matchDate,
+        venue: formValue.venue,
+        stage: formValue.stage,
+        status: formValue.status,
+      }
+      this.matches.push(newMatch)
+      this.hideAddMatchForm()
+    }
   }
 
   editMatch(match: Match): void {
-    console.log("Edit match:", match)
+    this.showAddForm = true
+    this.matchForm.patchValue({
+      homeTeam: match.homeTeam,
+      awayTeam: match.awayTeam,
+      matchDate: match.matchDate,
+      venue: match.venue,
+      stage: match.stage,
+      status: match.status,
+    })
   }
 
   deleteMatch(match: Match): void {
-    console.log("Delete match:", match)
-    if (confirm(`Are you sure you want to delete the match for ${match.name}?`)) {
-      this.matches = this.matches.filter((m) => m.id !== match.id)
-    }
+    this.matches = this.matches.filter((m) => m.id !== match.id)
   }
 }
-

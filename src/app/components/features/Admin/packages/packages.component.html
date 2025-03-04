@@ -16,7 +16,7 @@
       <div *ngFor="let packageItem of packages" class="package-card bg-white rounded-lg shadow-sm overflow-hidden">
         <div class="p-6">
           <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ packageItem.name }}</h2>
-          <p class="text-3xl font-bold text-indigo-600 mb-4">${{ packageItem.price }}<span class="text-sm text-gray-500">/month</span></p>
+          <p class="text-3xl font-bold text-[#f60033] mb-4">${{ packageItem.price }}<span class="text-sm text-gray-500">/month</span></p>
           <ul class="feature-list mb-6">
             <li *ngFor="let feature of packageItem.features" class="flex items-center mb-2">
               <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@
               {{ feature }}
             </li>
           </ul>
-          <button (click)="editPackage(packageItem)" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300">
+          <button (click)="editPackage(packageItem)" class="w-full bg-[#f60033] text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300">
             Edit Package
           </button>
         </div>
