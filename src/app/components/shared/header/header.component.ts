@@ -16,7 +16,7 @@ export class HeaderComponent {
     { label: "Home", link: "/", active: true },
     { label: "Login", link: "/login" },
     { label: "Matches", link: "/all-groups" },
-    { label: "Stadiums", link: "/stadiums" },
+    { label: "About Us", link: "/about" },
     { label: "Dashboard", link: "/dashboard" },
   ]
 

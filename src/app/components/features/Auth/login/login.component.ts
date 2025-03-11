@@ -3,11 +3,6 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 
-interface LoginForm {
-  email: string;
-  password: string;
-}
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -51,16 +46,6 @@ export class LoginComponent implements OnInit {
 
     console.log('Login attempt with:', this.loginForm.value);
     // Here you would add your authentication logic
-    // For example:
-    // this.authService.login(this.loginForm.value).subscribe(
-    //   (response) => {
-    //     // Handle successful login
-    //     this.router.navigate(['/dashboard']);
-    //   },
-    //   (error) => {
-    //     // Handle login error
-    //   }
-    // );
   }
 
   // Convenience getter for easy access to form fields
