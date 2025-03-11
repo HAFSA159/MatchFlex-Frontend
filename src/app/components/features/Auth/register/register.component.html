@@ -1,64 +1,100 @@
-<!-- component -->
-<body>
-<section class="min-h-screen flex items-stretch text-white ">
-  <div
-    class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center"
-    style="background-image: url('../../../../../assets/band.PNG');">
-    <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
-    <div class="w-full px-24 z-10">
-      <h1 class="text-5xl font-bold text-left tracking-wide">Keep it special</h1>
-      <p class="text-3xl my-4">Capture your personal memory in unique way, anywhere.</p>
+<div class="register-container">
+  <div class="register-box">
+    <h1>Create Account</h1>
+    <h2>Join MatchFlex Today</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="John"
+            [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+          <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstName'].errors?.['required']">First Name is required</div>
+            <div *ngIf="f['firstName'].errors?.['minlength']">First Name must be at least 2 characters</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Doe"
+            [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+          <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+            <div *ngIf="f['lastName'].errors?.['required']">Last Name is required</div>
+            <div *ngIf="f['lastName'].errors?.['minlength']">Last Name must be at least 2 characters</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+          <div *ngIf="f['email'].errors?.['email']">Please enter a valid email address</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          placeholder="+21267777779"
+          [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }">
+        <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+          <div *ngIf="f['phone'].errors?.['required']">Phone number is required</div>
+          <div *ngIf="f['phone'].errors?.['pattern']">Please enter a valid phone number</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+            <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 8 characters</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }">
+          <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+            <div *ngIf="f['confirmPassword'].errors?.['required']">Confirm Password is required</div>
+            <div *ngIf="f['confirmPassword'].errors?.['passwordMismatch']">Passwords must match</div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="register-button">Create Account</button>
+    </form>
+
+    <div class="login-link">
+      <p>Already have an account? <a href="/login">Sign In</a></p>
     </div>
   </div>
-  <div class="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0" style="background-color: #161616;">
-    <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80);">
-      <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
-    </div>
-    <div class="w-full py-6 z-20">
-      <form class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
-        <div>
-          <label class="block mb-2 text-sm text-white-600 dark:text-gray-200">First Name</label>
-          <input type="text" placeholder="John" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-        </div>
-
-        <div>
-          <label class="block mb-2 text-sm text-white-600 dark:text-gray-200">Last name</label>
-          <input type="text" placeholder="Snow" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-        </div>
-
-        <div>
-          <label class="block mb-2 text-sm text-white-600 dark:text-gray-200">Phone number</label>
-          <input type="text" placeholder="XXX-XX-XXXX-XXX" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-        </div>
-
-        <div>
-          <label class="block mb-2 text-sm text-white-600 dark:text-gray-200">Email address</label>
-          <input type="email" placeholder="johnsnow@example.com" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-        </div>
-
-        <div>
-          <label class="block mb-2 text-sm text-white-600 dark:text-gray-200">Password</label>
-          <input type="password" placeholder="Enter your password" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-        </div>
-
-        <div>
-          <label class="block mb-2 text-sm text-white-600 dark:text-gray-200">Confirm password</label>
-          <input type="password" placeholder="Enter your password" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-        </div>
-
-        <button
-          class="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-          <span>Sign Up </span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:-scale-x-100" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-          </svg>
-        </button>
-      </form>
-
-    </div>
-  </div>
-</section>
-</body>
-
-
-
+</div>

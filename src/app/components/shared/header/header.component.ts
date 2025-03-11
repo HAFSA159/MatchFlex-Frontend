@@ -1,20 +1,27 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component } from "@angular/core"
+import { RouterModule } from "@angular/router"
+import { CommonModule } from "@angular/common"
 
 @Component({
-  selector: 'app-header',
+  selector: "app-header",
   standalone: true,
   imports: [RouterModule, CommonModule],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent {
+  isMobileMenuOpen = false
+
   navItems = [
-    { label: 'Home', link: '/', active: true },
-    { label: 'Login', link: '/login' },
-    { label: 'About', link: '/about' },
-    { label: 'Contacts', link: '/contact' },
-    { label: 'Dashboard', link: '/dashboard' },
-  ];
+    { label: "Home", link: "/", active: true },
+    { label: "Login", link: "/login" },
+    { label: "Matches", link: "/all-groups" },
+    { label: "Stadiums", link: "/stadiums" },
+    { label: "Dashboard", link: "/dashboard" },
+  ]
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen
+  }
 }
+
