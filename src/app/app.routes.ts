@@ -1,24 +1,24 @@
 import { Routes } from '@angular/router';
-import { SmartBandListComponent } from './components/features/smart-band-list/smart-band-list.component';
-import {HomeComponent} from './components/features/home/home.component';
-import {LoginComponent} from './components/features/Auth/login/login.component';
-import {RegisterComponent} from './components/features/Auth/register/register.component';
-import {AboutPageComponent} from './components/features/about-page/about-page.component';
-import {ContactComponent} from './components/features/contact/contact.component';
-import {ProfilComponent} from './components/features/profil/profil.component';
-import {DetailsGroupsComponent} from './components/features/details-groups/details-groups.component';
-import {AllGroupsComponent} from './components/features/all-groups/all-groups.component';
-import {ColorBandChoiceComponent} from './components/features/order/color-band-choice/color-band-choice.component';
-import {UserInfoComponent} from './components/features/order/user-info/user-info.component';
-import {PaymentComponent} from './components/features/order/payment/payment.component';
-import {ConfirmationComponent} from './components/features/order/confirmation/confirmation.component';
-import {TrackOrderComponent} from './components/features/track-order/track-order.component';
-import {DashboardComponent} from './components/features/Admin/dashboard/dashboard.component';
-import {TablesComponent} from './components/features/Admin/braceltTables/tables.component';
-import {UserComponent} from './components/features/Admin/user/user.component';
-import {ProfileComponent} from './components/features/Admin/profile/profile.component';
-import {MatchComponent} from './components/features/Admin/match/match.component';
-import {PackagesComponent} from './components/features/Admin/packages/packages.component';
+import {SmartBandListComponent} from './features/components/smart-band-list/smart-band-list.component';
+import {HomeComponent} from './features/components/home/home.component';
+import {AboutPageComponent} from './features/components/about-page/about-page.component';
+import {ContactComponent} from './features/components/contact/contact.component';
+import {ProfilComponent} from './features/components/profil/profil.component';
+import {DetailsGroupsComponent} from './features/components/details-groups/details-groups.component';
+import {AllGroupsComponent} from './features/components/all-groups/all-groups.component';
+import {ColorBandChoiceComponent} from './features/components/order/color-band-choice/color-band-choice.component';
+import {UserInfoComponent} from './features/components/order/user-info/user-info.component';
+import {PaymentComponent} from './features/components/order/payment/payment.component';
+import {ConfirmationComponent} from './features/components/order/confirmation/confirmation.component';
+import {TrackOrderComponent} from './features/components/track-order/track-order.component';
+import {DashboardComponent} from './features/components/Admin/dashboard/dashboard.component';
+import {TablesComponent} from './features/components/Admin/braceltTables/tables.component';
+import {UserComponent} from './features/components/Admin/user/user.component';
+import {ProfileComponent} from './features/components/Admin/profile/profile.component';
+import {MatchComponent} from './features/components/Admin/match/match.component';
+import {PackagesComponent} from './features/components/Admin/packages/packages.component';
+import {LoginComponent} from './features/components/Auth/login/login.component';
+import {RegisterComponent} from './features/components/Auth/register/register.component';
 
 export const routes: Routes = [
   /* Page*/

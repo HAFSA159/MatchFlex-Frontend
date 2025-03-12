@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Order } from '../../models/order.model';
+import { Order } from '../../shared/models/order.model';
 
 // Load User Orders
 export const loadUserOrders = createAction('[Order] Load User Orders');

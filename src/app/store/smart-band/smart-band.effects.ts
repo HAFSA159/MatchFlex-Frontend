@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { SmartBandService } from '../../services/smart-band.service';
+import { SmartBandService } from '../../core/services/smart-band.service';
 import * as SmartBandActions from './smart-band.actions';
 
 @Injectable()

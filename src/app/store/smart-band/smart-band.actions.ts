@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { SmartBand } from '../../models/smart-band.model';
+import { SmartBand } from '../../shared/models/smart-band.model';
 
 // Load Smart Bands
 export const loadSmartBands = createAction('[Smart Band] Load Smart Bands');

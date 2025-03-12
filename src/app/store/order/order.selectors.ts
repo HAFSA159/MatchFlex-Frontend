@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { OrderState } from '../../models/order.model';
+import { OrderState } from '../../shared/models/order.model';
 
 export const selectOrderState = createFeatureSelector<OrderState>('orders');
 

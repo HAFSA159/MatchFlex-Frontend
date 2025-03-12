@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { AuthState } from '../../models/user.model';
+import { AuthState } from '../../shared/models/user.model';
 import * as AuthActions from './auth.actions';
-export type { AuthState } from '../../models/user.model';
+export type { AuthState } from '../../shared/models/user.model';
 
 export const initialState: AuthState = {
   user: null,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { SmartBand } from '../models/smart-band.model';
+import { SmartBand } from '../../shared/models/smart-band.model';
 import { API_CONFIG } from './api-config';
 
 @Injectable({

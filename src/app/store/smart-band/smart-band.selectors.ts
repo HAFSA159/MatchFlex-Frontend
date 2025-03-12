@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { SmartBandState } from '../../models/smart-band.model';
+import { SmartBandState } from '../../shared/models/smart-band.model';
 
 export const selectSmartBandState = createFeatureSelector<SmartBandState>('smartBands');
 

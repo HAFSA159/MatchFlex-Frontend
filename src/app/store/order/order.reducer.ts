@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { OrderState } from '../../models/order.model';
+import { OrderState } from '../../shared/models/order.model';
 import * as OrderActions from './order.actions';
 
-export type { OrderState } from '../../models/order.model';
+export type { OrderState } from '../../shared/models/order.model';
 
 export const initialState: OrderState = {
   orders: [],

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, NavigationEnd, Event } from '@angular/router';
-import { HeaderComponent } from './components/shared/header/header.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from './store';
 import * as AuthActions from './store/auth/auth.actions';
+import {HeaderComponent} from './shared/components/header/header.component';
+import {FooterComponent} from './shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, HeaderComponent, FooterComponent, CommonModule],
+  imports: [RouterModule, HeaderComponent, FooterComponent, CommonModule, HeaderComponent],
   template: `
     <app-header *ngIf="!isDashboard"></app-header>
     <main>

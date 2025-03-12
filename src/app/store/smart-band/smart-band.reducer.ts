@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { SmartBandState } from '../../models/smart-band.model';
+import { SmartBandState } from '../../shared/models/smart-band.model';
 import * as SmartBandActions from './smart-band.actions';
-export type { SmartBandState } from '../../models/smart-band.model';
+export type { SmartBandState } from '../../shared/models/smart-band.model';
 
 export const initialState: SmartBandState = {
   bands: [],
