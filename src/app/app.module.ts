@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +10,9 @@ import {AllGroupsComponent} from './components/features/all-groups/all-groups.co
 import {DetailsGroupsComponent} from './components/features/details-groups/details-groups.component';
 import {TrackOrderComponent} from './components/features/track-order/track-order.component';
 import {DashboardComponent} from './components/features/Admin/dashboard/dashboard.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +24,9 @@ import {DashboardComponent} from './components/features/Admin/dashboard/dashboar
     DetailsGroupsComponent,
     TrackOrderComponent,
     DashboardComponent,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    isDevMode() ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]
