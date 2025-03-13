@@ -19,6 +19,7 @@ import {MatchComponent} from './features/components/Admin/match/match.component'
 import {PackagesComponent} from './features/components/Admin/packages/packages.component';
 import {LoginComponent} from './features/components/Auth/login/login.component';
 import {RegisterComponent} from './features/components/Auth/register/register.component';
+import {DashUserComponent} from './features/components/dash-user/dash-user.component';
 
 export const routes: Routes = [
   /* Page*/
@@ -38,13 +39,16 @@ export const routes: Routes = [
   { path: "confirmation", component: ConfirmationComponent},
   { path: "track-order/:id", component: TrackOrderComponent},
 
-  /* Dashboard */
+  /* Dashboard-Admin */
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard-tables', component: TablesComponent },
   { path: 'dashboard-user', component: UserComponent },
   { path: 'dashboard-profil', component: ProfileComponent },
   { path: 'dashboard-matchs', component: MatchComponent },
   { path: 'dashboard-package', component: PackagesComponent },
+
+  /* Dashboard-User */
+  { path: 'dash-user', component: DashUserComponent },
 
   /* Auth */
   { path: 'login', component: LoginComponent },

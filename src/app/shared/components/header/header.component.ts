@@ -17,6 +17,7 @@ export class HeaderComponent {
     { label: "Login", link: "/login" },
     { label: "Matches", link: "/all-groups" },
     { label: "About Us", link: "/about" },
+    { label: "contact", link: "/contact" },
     { label: "Dashboard", link: "/dashboard" },
   ]
 

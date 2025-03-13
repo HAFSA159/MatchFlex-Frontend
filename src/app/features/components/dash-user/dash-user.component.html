@@ -1,0 +1,299 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+    <div class="sidebar-header">
+      <a href="/home">
+        <div class="logo-container">
+          <i class="icon-ticket"></i>
+          <h2>MatchFlex</h2>
+        </div>
+      </a>
+      <button class="close-sidebar-btn" (click)="toggleSidebar()" *ngIf="isMobile">
+        <i class="icon-close"></i>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li [class.active]="activeTab === 'dashboard'">
+          <a href="javascript:void(0)" (click)="setActiveTab('dashboard')">
+            <i class="icon-dashboard"></i> Dashboard
+          </a>
+        </li>
+        <li [class.active]="activeTab === 'orders'">
+          <a href="javascript:void(0)" (click)="setActiveTab('orders')">
+            <i class="icon-package"></i> My Orders
+          </a>
+        </li>
+        <li [class.active]="activeTab === 'bracelet'">
+          <a href="javascript:void(0)" (click)="setActiveTab('bracelet')">
+            <i class="icon-bracelet"></i> My Bracelet
+          </a>
+        </li>
+        <li [class.active]="activeTab === 'notifications'">
+          <a href="javascript:void(0)" (click)="setActiveTab('notifications')">
+            <i class="icon-notification"></i> Notifications
+            <span class="badge-count" *ngIf="getUnreadNotificationsCount() > 0">
+              {{ getUnreadNotificationsCount() }}
+            </span>
+          </a>
+        </li>
+        <li [class.active]="activeTab === 'settings'">
+          <a href="javascript:void(0)" (click)="setActiveTab('settings')">
+            <i class="icon-settings"></i> Settings
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar">
+          <img src="assets/avatar.webp" alt="User Avatar" onerror="this.src='assets/avatar.webp'">
+        </div>
+        <div class="user-details">
+          <p class="user-name">{{ user?.name || 'User' }}</p>
+          <p class="user-status">{{ user?.membershipType || 'Member' }}</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="dashboard-header">
+      <div class="header-left">
+        <button class="menu-toggle" (click)="toggleSidebar()" *ngIf="isMobile">
+          <i class="icon-menu"></i>
+        </button>
+<!--
+        <h1>Welcome back, {{ user?.name?.split(' ')[0] || 'User' }}!</h1>
+-->
+      </div>
+      <div class="header-actions">
+        <button class="notification-btn" (click)="setActiveTab('notifications')">
+          <i class="icon-bell"></i>
+          <span class="notification-badge" *ngIf="getUnreadNotificationsCount() > 0">
+            {{ getUnreadNotificationsCount() }}
+          </span>
+        </button>
+        <button class="profile-btn">
+          <img src="assets/avatar.webp" alt="User Avatar" class="avatar-small" onerror="this.src='assets/avatar.webp'">
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+      <!-- Dashboard Overview -->
+      <section class="dashboard-overview" *ngIf="activeTab === 'dashboard'">
+        <div class="card bracelet-status">
+          <div class="card-header">
+            <h3>Bracelet Status</h3>
+          </div>
+          <div class="card-body">
+            <div class="bracelet-info">
+              <div class="bracelet-image">
+                <img src="assets/band.PNG" alt="Smart Bracelet" onerror="this.src='assets/band.PNG'">
+              </div>
+              <div class="bracelet-details">
+                <h4>{{ bracelet?.model || 'MatchFlex Pro' }}</h4>
+                <p class="bracelet-id">ID: {{ bracelet?.id || 'MF-2023-8765' }}</p>
+                <div class="bracelet-status-indicator" [class.active]="bracelet?.status === 'active'" [class.inactive]="bracelet?.status !== 'active'">
+                  <span class="status-dot"></span>
+                  <span class="status-text">{{ bracelet?.status === 'active' ? 'Active' : 'Inactive' }}</span>
+                </div>
+                <p class="battery-level">Battery: {{ bracelet?.batteryLevel || 0 }}%</p>
+              </div>
+            </div>
+            <div class="bracelet-actions">
+              <button class="btn btn-primary" (click)="rechargeBracelet()">Recharge</button>
+              <button class="btn btn-outline" (click)="setActiveTab('bracelet')">Manage</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card upcoming-events">
+          <div class="card-header">
+            <h3>Upcoming Events</h3>
+            <a href="javascript:void(0)" class="view-all">View All</a>
+          </div>
+          <div class="card-body">
+            <div class="loading-spinner" *ngIf="loading.events"></div>
+            <ul class="event-list" *ngIf="!loading.events && upcomingEvents.length > 0">
+              <li class="event-item" *ngFor="let event of upcomingEvents">
+                <div class="event-date">
+                  <span class="day">{{ getDay(event.date) }}</span>
+                  <span class="month">{{ getMonth(event.date) }}</span>
+                </div>
+                <div class="event-details">
+                  <h4 class="event-title">{{ event.title }}</h4>
+                  <p class="event-location">{{ event.location }}</p>
+                </div>
+                <div class="event-status">
+                  <span class="badge" [class]="event.status">{{ event.status }}</span>
+                </div>
+              </li>
+            </ul>
+            <div class="empty-state" *ngIf="!loading.events && upcomingEvents.length === 0">
+              <p>No upcoming events found.</p>
+              <button class="btn btn-outline">Browse Events</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Order Tracking -->
+      <section class="order-tracking" *ngIf="activeTab === 'orders'">
+        <div class="section-header">
+          <h2>Order Tracking</h2>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="loading-spinner" *ngIf="loading.orders"></div>
+            <div class="order-list" *ngIf="!loading.orders && orders.length > 0">
+              <div class="order-item" *ngFor="let order of orders">
+                <div class="order-header">
+                  <div class="order-info">
+                    <h4>Order #{{ order.id }}</h4>
+                    <p class="order-date">Placed on {{ formatDate(order.date) }}</p>
+                  </div>
+                  <div class="order-status">
+                    <span class="badge" [class]="order.status">{{ order.status }}</span>
+                  </div>
+                </div>
+                <div class="order-details">
+                  <div class="product-info" *ngFor="let item of order.items">
+                    <img [src]="item.image" [alt]="item.name" class="product-image" onerror="this.src='assets/band.PNG'">
+                    <div class="product-details">
+                      <h5>{{ item.name }}</h5>
+                      <p class="product-price">${{ item.price.toFixed(2) }} × {{ item.quantity }}</p>
+                    </div>
+                  </div>
+                  <div class="tracking-info" *ngIf="order.trackingSteps">
+                    <div class="tracking-steps">
+                      <div class="step" *ngFor="let step of order.trackingSteps" [class.completed]="step.completed" [class.active]="step.active">
+                        <div class="step-icon"><i [class]="'icon-' + step.icon"></i></div>
+                        <div class="step-details">
+                          <p class="step-title">{{ step.title }}</p>
+                          <p class="step-date">{{ formatDate(step.date) }}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline btn-sm" (click)="trackOrder(order.id)" *ngIf="order.trackingNumber">Track Package</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="empty-state" *ngIf="!loading.orders && orders.length === 0">
+              <p>No orders found.</p>
+              <button class="btn btn-primary">Shop Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bracelet Management -->
+      <section class="bracelet-management" *ngIf="activeTab === 'bracelet'">
+        <div class="section-header">
+          <h2>Bracelet Management</h2>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="loading-spinner" *ngIf="loading.bracelet"></div>
+            <div class="bracelet-management-content" *ngIf="!loading.bracelet && bracelet">
+              <div class="bracelet-stats">
+                <div class="stat-item">
+                  <h4>Battery Level</h4>
+                  <div class="progress-container">
+                    <div class="progress-bar" [style.width.%]="bracelet.batteryLevel"></div>
+                  </div>
+                  <p class="stat-value">{{ bracelet.batteryLevel }}%</p>
+                </div>
+                <div class="stat-item">
+                  <h4>Storage</h4>
+                  <div class="progress-container">
+                    <div class="progress-bar" [style.width.%]="bracelet.storageUsed"></div>
+                  </div>
+                  <p class="stat-value">{{ bracelet.storageUsed }}%</p>
+                </div>
+                <div class="stat-item">
+                  <h4>Last Synced</h4>
+                  <p class="stat-value">{{ formatDate(bracelet.lastSynced) }}</p>
+                </div>
+              </div>
+              <div class="bracelet-actions-container">
+                <h4>Quick Actions</h4>
+                <div class="action-buttons">
+                  <button class="action-btn" (click)="syncBracelet()">
+                    <i class="icon-sync"></i>
+                    <span>Sync</span>
+                  </button>
+                  <button class="action-btn" (click)="locateBracelet()">
+                    <i class="icon-locate"></i>
+                    <span>Locate</span>
+                  </button>
+                  <button class="action-btn" (click)="rechargeBracelet()">
+                    <i class="icon-recharge"></i>
+                    <span>Recharge</span>
+                  </button>
+                  <button class="action-btn" (click)="updateBracelet()">
+                    <i class="icon-update"></i>
+                    <span>Update</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="empty-state" *ngIf="!loading.bracelet && !bracelet">
+              <p>No bracelet found.</p>
+              <button class="btn btn-primary">Buy Bracelet</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notifications -->
+      <section class="notifications" *ngIf="activeTab === 'notifications'">
+        <div class="section-header">
+          <h2>Notifications</h2>
+          <button class="btn btn-text" (click)="markAllNotificationsAsRead()" *ngIf="getUnreadNotificationsCount() > 0">Mark all as read</button>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="loading-spinner" *ngIf="loading.notifications"></div>
+            <ul class="notification-list" *ngIf="!loading.notifications && notifications.length > 0">
+              <li class="notification-item" *ngFor="let notification of notifications" [class.unread]="!notification.read">
+                <div class="notification-icon" [ngClass]="'notification-icon-' + notification.type">
+                  <i [class]="'icon-' + getNotificationIcon(notification.type)"></i>
+                </div>
+                <div class="notification-content">
+                  <h4>{{ notification.title }}</h4>
+                  <p>{{ notification.message }}</p>
+                  <span class="notification-time">{{ formatTime(notification.time) }}</span>
+                </div>
+                <div class="notification-actions">
+                  <button class="btn-icon" (click)="markNotificationAsRead(notification.id)" *ngIf="!notification.read">
+                    <i class="icon-check"></i>
+                  </button>
+                </div>
+              </li>
+            </ul>
+            <div class="empty-state" *ngIf="!loading.notifications && notifications.length === 0">
+              <p>No notifications found.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings (placeholder) -->
+      <section class="settings" *ngIf="activeTab === 'settings'">
+        <div class="section-header">
+          <h2>Settings</h2>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p>Settings content will go here.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

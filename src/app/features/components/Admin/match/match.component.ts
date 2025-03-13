@@ -16,7 +16,7 @@ interface Match {
 @Component({
   selector: "app-match",
   standalone: true,
-  imports: [SidebarComponent, NgForOf, NgClass, NgIf, ReactiveFormsModule, NgStyle],
+  imports: [SidebarComponent, NgForOf, NgClass, NgIf, ReactiveFormsModule],
   templateUrl: "./match.component.html",
   styleUrls: ["./match.component.scss"],
 })

@@ -5,13 +5,13 @@ import { filter } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from './store';
 import * as AuthActions from './store/auth/auth.actions';
-import {HeaderComponent} from './shared/components/header/header.component';
-import {FooterComponent} from './shared/components/footer/footer.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, HeaderComponent, FooterComponent, CommonModule, HeaderComponent],
+  imports: [RouterModule, HeaderComponent, FooterComponent, CommonModule],
   template: `
     <app-header *ngIf="!isDashboard"></app-header>
     <main>
@@ -19,8 +19,7 @@ import {FooterComponent} from './shared/components/footer/footer.component';
     </main>
     <app-footer *ngIf="!isDashboard"></app-footer>
   `,
-  styles: [`
-  `]
+  styles: [``]
 })
 export class AppComponent implements OnInit {
   isDashboard = false;
@@ -32,7 +31,7 @@ export class AppComponent implements OnInit {
     this.router.events.pipe(
       filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      this.isDashboard = event.urlAfterRedirects.includes('/dashboard');
+      this.isDashboard = ["/dashboard", "/dash-user"].some(route => event.urlAfterRedirects.includes(route));
     });
   }
 
